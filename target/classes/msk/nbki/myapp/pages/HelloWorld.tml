@@ -1,0 +1,8 @@
+<html title="Hello World"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+      xmlns:p="tapestry:parameter">
+<body>
+<p>Hello World</p>
+</body>
+
+</html>
