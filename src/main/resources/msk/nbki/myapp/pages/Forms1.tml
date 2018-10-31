@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+<head>
+    <link href="/css/plain.css" rel="stylesheet" type="text/css"/>
+</head>
+<body class="container">
+<h2>BMI Calculator</h2>
+<div class="eg">
+    <t:form t:id="names" class="form-horizontal">
+        <div class="form-group">
+            <t:label for="name" class="col-sm-2"/>
+            <div class="col-sm-4">
+                <t:textfield t:id="Name" value="name"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <t:label for="weight" class="col-sm-2"/>
+            <div class="col-sm-4">
+                <t:textfield value="weight" t:id="weight"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <t:label for="height" class="col-sm-2"/>
+            <div class="col-sm-4">
+                <t:textfield value="height" t:id="height"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <t:label for="gender" class="col-sm-2"/>
+            <div class="col-sm-4">
+                <t:textfield t:id="Gender" value="gender"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-4 col-sm-offset-2">
+                <t:submit/>
+            </div>
+        </div>
+    </t:form>
+
+    <div>
+    <t:grid source="humans" include="name, bmi, formatDate, formatTime" class="table table-bordered" pagerPosition="top"/>
+    </div>
+
+</div>
+</body>
+</html>
