@@ -6,7 +6,7 @@
 <body class="container">
 <h2>BMI Calculator</h2>
 <div class="eg">
-    <t:form t:id="names" class="form-horizontal">
+    <t:form t:id="names" class="form-horizontal" async="true">
         <div class="form-group">
             <t:label for="name" class="col-sm-2"/>
             <div class="col-sm-4">
@@ -43,8 +43,10 @@
     </t:form>
 
     <div>
-    <t:grid source="humans" include="name, bmi, formatDate, formatTime" class="table table-bordered" pagerPosition="top"/>
+        <t:grid source="humans" include="name, bmi, formatDate, formatTime" class="table table-bordered" pagerPosition="top"/>
     </div>
+
+
 
 </div>
 </body>

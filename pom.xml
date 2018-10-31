@@ -79,9 +79,7 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-
-    <reporting/>
-
+    
     <repositories>
         <repository>
             <id>jboss</id>
