@@ -1,53 +1,47 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
 <head>
-    <link href="/css/plain.css" rel="stylesheet" type="text/css"/>
+    <link href="context:css/plain.css" rel="stylesheet" type="text/css"/>
 </head>
 <body class="container">
 <h2>BMI Calculator</h2>
 <div class="eg">
-    <t:form t:id="names" class="form-horizontal" async="true">
+    <t:form t:id="names" class="form-horizontal">
         <div class="form-group">
             <t:label for="name" class="col-sm-2"/>
             <div class="col-sm-4">
-                <t:textfield t:id="Name" value="name"/>
+                <t:textfield t:id="name" value="name"/>
             </div>
         </div>
-
         <div class="form-group">
             <t:label for="weight" class="col-sm-2"/>
             <div class="col-sm-4">
-                <t:textfield value="weight" t:id="weight"/>
+                <t:textfield t:id="weight" value="weight" aria-readonly="false"/>
             </div>
         </div>
-
         <div class="form-group">
             <t:label for="height" class="col-sm-2"/>
             <div class="col-sm-4">
-                <t:textfield value="height" t:id="height"/>
+                <t:textfield t:id="height" value="height" aria-readonly="false"/>
             </div>
         </div>
-
         <div class="form-group">
             <t:label for="gender" class="col-sm-2"/>
             <div class="col-sm-4">
-                <t:textfield t:id="Gender" value="gender"/>
+                <t:select t:id="gender" value="gender">
+                </t:select>
             </div>
         </div>
-
         <div class="form-group">
             <div class="col-sm-4 col-sm-offset-2">
-                <t:submit/>
+                <t:submit value="Submit" />
             </div>
         </div>
+        <div class="col-6 col-sm-3 justify-content-end">
+            <t:grid source="humansHistory.list" include="name, bmi, date, time"
+                    class="table table-bordered" pagerPosition="top"/>
+        </div>
     </t:form>
-
-    <div>
-        <t:grid source="humans" include="name, bmi, formatDate, formatTime" class="table table-bordered" pagerPosition="top"/>
-    </div>
-
-
-
 </div>
 </body>
 </html>

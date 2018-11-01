@@ -1,65 +1,69 @@
 package msk.nbki.myapp.pages;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
-import msk.nbki.myapp.domain.Human;
+import msk.nbki.myapp.domain.Gender;
+import msk.nbki.myapp.services.HumansHistory;
 import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Form;
+import org.apache.tapestry5.corelib.components.Select;
 import org.apache.tapestry5.corelib.components.TextField;
-
-import java.util.ArrayList;
-import java.util.Date;
+import org.apache.tapestry5.ioc.annotations.Inject;
 
 public class Forms1 {
+    @Inject
     @Property
-    ArrayList<Human> humans = new ArrayList<Human>();
+    private HumansHistory humansHistory;
 
+    /*Main props*/
     @Property
-    Human human;
-
-    @Property
-    @NotNull
-    @Size(max = 10)
     private String name;
 
     @Property
-    @NotNull
-    private double weight;
+    private Double weight;
 
     @Property
-    @NotNull
-    private double height;
+    private Double height;
 
     @Property
-    @NotNull
-    private String gender;
+    private Gender gender;
 
-
+    /*Form validation check components*/
     @InjectComponent("names")
     private Form form;
 
     @InjectComponent("name")
     private TextField nameField;
+
     @InjectComponent("weight")
     private TextField weightField;
+
     @InjectComponent("height")
     private TextField heightField;
 
-    void onValidateFromNames() {
-        if (name == null)
-            form.recordError(nameField, "You've not entered the name");
-        if(weight == 0)
-            form.recordError(weightField, "You've not entered a weight");
-        if(height == 0)
-            form.recordError(heightField, "You've not entered a height");
-
-    }
+    @InjectComponent("gender")
+    private Select genderSelect;
 
     synchronized Object onSuccess() {
-        Human human = new Human(name, weight, height, gender, new Date());
-        humans.add(0, human);
+        humansHistory.addHistory(name, weight, height);
         return this;
+    }
+
+    void onValidateFromNames() {
+        if (name == null) {
+            form.recordError(nameField,
+                "You've not entered the name");
+        }
+        if (weight == null) {
+            form.recordError(weightField,
+                "You've not entered a weight");
+        }
+        if (height == null) {
+            form.recordError(heightField,
+                "You've not entered a height");
+        }
+        if (gender == null) {
+            form.recordError(genderSelect,
+                "You have not chosen a gender");
+        }
     }
 }
